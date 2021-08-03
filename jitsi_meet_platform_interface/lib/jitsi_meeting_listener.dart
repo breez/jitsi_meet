@@ -19,18 +19,34 @@ class JitsiMeetingListener {
   ///
   final Function(dynamic error)? onError;
 
+  ///
+  final Function(Map<dynamic, dynamic> message)? onBoost;
+
+  ///
+  final Function(Map<dynamic, dynamic> message)? changeSatsPerMinute;
+
+  ///
+  final Function()? setCustomBoostAmount;
+
+  ///
+  final Function()? setCustomSatsPerMinAmount;
+
   /// Generic listeners List for allowed listeners on web
   /// (may be for mobile too)
   final List<JitsiGenericListener>? genericListeners;
 
   JitsiMeetingListener(
       {this.onConferenceWillJoin,
-      this.onConferenceJoined,
-      this.onConferenceTerminated,
-      this.onPictureInPictureTerminated,
-      this.onPictureInPictureWillEnter,
-      this.onError,
-      this.genericListeners});
+        this.onConferenceJoined,
+        this.onConferenceTerminated,
+        this.onPictureInPictureTerminated,
+        this.onPictureInPictureWillEnter,
+        this.onError,
+        this.onBoost,
+        this.changeSatsPerMinute,
+        this.setCustomBoostAmount,
+        this.setCustomSatsPerMinAmount,
+        this.genericListeners});
 }
 
 /// Generic listener

@@ -82,10 +82,33 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
     }
 
     override fun onConferenceTerminated(data: HashMap<String, Any>) {
-
         Log.d(JITSI_PLUGIN_TAG, String.format("JitsiMeetPluginActivity.onConferenceTerminated: %s", data))
         JitsiMeetEventStreamHandler.instance.onConferenceTerminated(data)
         super.onConferenceTerminated(data)
+    }
+
+    override fun onBoost(data: HashMap<String, Any>) {
+        Log.d(JITSI_PLUGIN_TAG, String.format("JitsiMeetPluginActivity.onBoost: %s", data))
+        JitsiMeetEventStreamHandler.instance.onBoost(data)
+        super.onBoost(data)
+    }
+
+    override fun changeSatsPerMinute(data: HashMap<String, Any>) {
+        Log.d(JITSI_PLUGIN_TAG, String.format("JitsiMeetPluginActivity.changeSatsPerMinute: %s", data))
+        JitsiMeetEventStreamHandler.instance.changeSatsPerMinute(data)
+        super.changeSatsPerMinute(data)
+    }
+
+    override fun setCustomBoostAmount() {
+        Log.d(JITSI_PLUGIN_TAG, String.format("JitsiMeetPluginActivity.setCustomBoostAmount"))
+        JitsiMeetEventStreamHandler.instance.setCustomBoostAmount()
+        super.setCustomBoostAmount()
+    }
+
+    override fun setCustomSatsPerMinAmount() {
+        Log.d(JITSI_PLUGIN_TAG, String.format("JitsiMeetPluginActivity.setCustomSatsPerMinAmount"))
+        JitsiMeetEventStreamHandler.instance.setCustomSatsPerMinAmount()
+        super.setCustomSatsPerMinAmount()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

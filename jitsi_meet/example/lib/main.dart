@@ -38,7 +38,11 @@ class _MeetingState extends State<Meeting> {
         onConferenceWillJoin: _onConferenceWillJoin,
         onConferenceJoined: _onConferenceJoined,
         onConferenceTerminated: _onConferenceTerminated,
-        onError: _onError));
+        onError: _onError,
+        onBoost: _onBoost,
+        changeSatsPerMinute: _changeSatsPerMinute,
+        setCustomBoostAmount: _setCustomBoostAmount,
+        setCustomSatsPerMinAmount: _setCustomSatsPerMinAmount));
   }
 
   @override
@@ -279,6 +283,18 @@ class _MeetingState extends State<Meeting> {
           onConferenceTerminated: (message) {
             debugPrint("${options.room} terminated with message: $message");
           },
+          onBoost: (message) {
+            debugPrint("Called onBoost with message: $message");
+          },
+          changeSatsPerMinute: (message) {
+            debugPrint("Called changeSatsPerMinute with message: $message");
+          },
+          setCustomBoostAmount: () {
+            debugPrint("Called setCustomBoostAmount");
+          },
+          setCustomSatsPerMinAmount: () {
+            debugPrint("Called setCustomSatsPerMinAmount");
+          },
           genericListeners: [
             JitsiGenericListener(
                 eventName: 'readyToClose',
@@ -299,6 +315,22 @@ class _MeetingState extends State<Meeting> {
 
   void _onConferenceTerminated(message) {
     debugPrint("_onConferenceTerminated broadcasted with message: $message");
+  }
+
+  void _onBoost(message) {
+    debugPrint("_onBoost broadcasted with message: $message");
+  }
+
+  void _changeSatsPerMinute(message) {
+    debugPrint("_changeSatsPerMinute broadcasted with message: $message");
+  }
+
+  void _setCustomBoostAmount() {
+    debugPrint("_setCustomBoostAmount broadcasted.");
+  }
+
+  void _setCustomSatsPerMinAmount() {
+    debugPrint("_setCustomSatsPerMinAmount broadcasted.");
   }
 
   _onError(error) {

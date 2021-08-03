@@ -150,6 +150,22 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
           // Remove the listener from the map of _perMeetingListeners on terminate
           _perMeetingListeners.remove(listener);
           break;
+        case "onBoost":
+          if (listener.onBoost != null)
+            listener.onBoost!(message);
+          break;
+        case "changeSatsPerMinute":
+          if (listener.changeSatsPerMinute != null)
+            listener.changeSatsPerMinute!(message);
+          break;
+        case "setCustomBoostAmount":
+          if (listener.setCustomBoostAmount != null)
+            listener.setCustomBoostAmount!();
+          break;
+        case "setCustomSatsPerMinAmount":
+          if (listener.setCustomSatsPerMinAmount != null)
+            listener.setCustomSatsPerMinAmount!();
+          break;
       }
     }
   }
