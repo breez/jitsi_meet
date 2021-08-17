@@ -30,6 +30,7 @@ class _MeetingState extends State<Meeting> {
   bool? isAudioOnly = true;
   bool? isAudioMuted = true;
   bool? isVideoMuted = true;
+  bool? isLightTheme = true;
 
   @override
   void initState() {
@@ -185,6 +186,14 @@ class _MeetingState extends State<Meeting> {
             value: isVideoMuted,
             onChanged: _onVideoMutedChanged,
           ),
+          SizedBox(
+            height: 14.0,
+          ),
+          CheckboxListTile(
+            title: Text("Light Theme"),
+            value: isLightTheme,
+            onChanged: _onThemeChanged,
+          ),
           Divider(
             height: 48.0,
             thickness: 2.0,
@@ -216,6 +225,12 @@ class _MeetingState extends State<Meeting> {
   _onAudioOnlyChanged(bool? value) {
     setState(() {
       isAudioOnly = value;
+    });
+  }
+
+  _onThemeChanged(bool? value) {
+    setState(() {
+      isLightTheme = value;
     });
   }
 
@@ -261,6 +276,7 @@ class _MeetingState extends State<Meeting> {
       ..audioMuted = isAudioMuted
       ..videoMuted = isVideoMuted
       ..featureFlags.addAll(featureFlags)
+      ..isLightTheme = isLightTheme
       ..webOptions = {
         "roomName": roomText.text,
         "width": "100%",
