@@ -19,6 +19,7 @@ class JitsiMeetingOptions {
   String? userEmail;
   String? iosAppBarRGBAColor;
   String? userAvatarURL;
+  bool? isLightTheme;
 
   Map<String, dynamic>? webOptions; // options for web
 
@@ -41,6 +42,7 @@ class JitsiMeetingOptions {
     return 'JitsiMeetingOptions{room: $room, serverURL: $serverURL, '
         'subject: $subject, token: $token, audioMuted: $audioMuted, '
         'audioOnly: $audioOnly, videoMuted: $videoMuted, '
+        'isLightTheme: $isLightTheme, '
         'userDisplayName: $userDisplayName, userEmail: $userEmail, '
         'iosAppBarRGBAColor :$iosAppBarRGBAColor, featureFlags: $featureFlags }';
   }

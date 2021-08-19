@@ -49,6 +49,7 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
       'userDisplayName': options.userDisplayName,
       'userEmail': options.userEmail,
       'iosAppBarRGBAColor': options.iosAppBarRGBAColor,
+      'isLightTheme': options.isLightTheme,
     };
 
     return await _channel
@@ -124,6 +125,22 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
         case "onConferenceTerminated":
           if (listener.onConferenceTerminated != null)
             listener.onConferenceTerminated!(message);
+          break;
+        case "onBoost":
+          if (listener.onBoost != null)
+            listener.onBoost!(message);
+          break;
+        case "changeSatsPerMinute":
+          if (listener.changeSatsPerMinute != null)
+            listener.changeSatsPerMinute!(message);
+          break;
+        case "setCustomBoostAmount":
+          if (listener.setCustomBoostAmount != null)
+            listener.setCustomBoostAmount!();
+          break;
+        case "onConferenceTerminated":
+          if (listener.setCustomSatsPerMinAmount != null)
+            listener.setCustomSatsPerMinAmount!();
           break;
       }
     });
