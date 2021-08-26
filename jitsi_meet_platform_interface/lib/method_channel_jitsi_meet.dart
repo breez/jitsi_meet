@@ -136,11 +136,11 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
           break;
         case "setCustomBoostAmount":
           if (listener.setCustomBoostAmount != null)
-            listener.setCustomBoostAmount!();
+            listener.setCustomBoostAmount!(message);
           break;
-        case "onConferenceTerminated":
+        case "setCustomSatsPerMinAmount":
           if (listener.setCustomSatsPerMinAmount != null)
-            listener.setCustomSatsPerMinAmount!();
+            listener.setCustomSatsPerMinAmount!(message);
           break;
       }
     });
@@ -177,11 +177,11 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
           break;
         case "setCustomBoostAmount":
           if (listener.setCustomBoostAmount != null)
-            listener.setCustomBoostAmount!();
+            listener.setCustomBoostAmount!(message);
           break;
         case "setCustomSatsPerMinAmount":
           if (listener.setCustomSatsPerMinAmount != null)
-            listener.setCustomSatsPerMinAmount!();
+            listener.setCustomSatsPerMinAmount!(message);
           break;
       }
     }

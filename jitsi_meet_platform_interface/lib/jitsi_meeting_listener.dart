@@ -26,10 +26,10 @@ class JitsiMeetingListener {
   final Function(Map<dynamic, dynamic> message)? changeSatsPerMinute;
 
   ///
-  final Function()? setCustomBoostAmount;
+  final Function(Map<dynamic, dynamic> message)? setCustomBoostAmount;
 
   ///
-  final Function()? setCustomSatsPerMinAmount;
+  final Function(Map<dynamic, dynamic> message)? setCustomSatsPerMinAmount;
 
   /// Generic listeners List for allowed listeners on web
   /// (may be for mobile too)
