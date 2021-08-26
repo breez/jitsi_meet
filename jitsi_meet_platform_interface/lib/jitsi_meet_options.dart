@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:core';
 
 import 'feature_flag/feature_flag_enum.dart';
 import 'feature_flag/feature_flag_helper.dart';
@@ -20,6 +21,12 @@ class JitsiMeetingOptions {
   String? iosAppBarRGBAColor;
   String? userAvatarURL;
   bool? isLightTheme;
+  List<int>? presetBoostAmountsList;
+  List<int>? presetSatsPerMinuteAmountsList;
+  int? customBoostValue;
+  int? customSatsPerMinAmountValue;
+  int? selectedBoostAmountIndex;
+  int? selectedSatsPerMinuteAmountIndex;
 
   Map<String, dynamic>? webOptions; // options for web
 
@@ -44,6 +51,9 @@ class JitsiMeetingOptions {
         'audioOnly: $audioOnly, videoMuted: $videoMuted, '
         'isLightTheme: $isLightTheme, '
         'userDisplayName: $userDisplayName, userEmail: $userEmail, '
+        'presetBoostAmountsList: $presetBoostAmountsList, customBoostValue: $customBoostValue, '
+        'presetSatsPerMinuteAmountsList: $presetSatsPerMinuteAmountsList, customSatsPerMinAmountValue: $customSatsPerMinAmountValue, '
+        'selectedBoostAmountIndex: $selectedBoostAmountIndex, selectedSatsPerMinuteAmountIndex: $selectedSatsPerMinuteAmountIndex, '
         'iosAppBarRGBAColor :$iosAppBarRGBAColor, featureFlags: $featureFlags }';
   }
 
