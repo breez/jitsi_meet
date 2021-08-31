@@ -267,10 +267,12 @@ class _MeetingState extends State<Meeting> {
       }
     }
     String paymentOptions = jsonEncode({
-      "customBoostValue": "2500",
-      "customSatsPerMinAmountValue": "125",
-      "selectedBoostAmountIndex": "1",
-      "selectedSatsPerMinuteAmountIndex": "0",
+      "presetBoostAmountsList": [1000, 5000, 10000, 25000, 50000, 100000],
+      "presetSatsPerMinuteAmountsList": [0, 50, 100, 250, 500, 1000, 2500, 5000],
+      "customBoostValue": 2500,
+      "customSatsPerMinAmountValue": 125,
+      "selectedBoostAmountIndex": 1,
+      "selectedSatsPerMinuteAmountIndex": 0,
     });
 
     // Define meetings options here
