@@ -21,8 +21,6 @@ class JitsiMeetingOptions {
   String? iosAppBarRGBAColor;
   String? userAvatarURL;
   bool? isLightTheme;
-  List<int>? presetBoostAmountsList;
-  List<int>? presetSatsPerMinuteAmountsList;
   int? customBoostValue;
   int? customSatsPerMinAmountValue;
   int? selectedBoostAmountIndex;
@@ -51,8 +49,7 @@ class JitsiMeetingOptions {
         'audioOnly: $audioOnly, videoMuted: $videoMuted, '
         'isLightTheme: $isLightTheme, '
         'userDisplayName: $userDisplayName, userEmail: $userEmail, '
-        'presetBoostAmountsList: $presetBoostAmountsList, customBoostValue: $customBoostValue, '
-        'presetSatsPerMinuteAmountsList: $presetSatsPerMinuteAmountsList, customSatsPerMinAmountValue: $customSatsPerMinAmountValue, '
+        'customSatsPerMinAmountValue: $customSatsPerMinAmountValue, customBoostValue: $customBoostValue, '
         'selectedBoostAmountIndex: $selectedBoostAmountIndex, selectedSatsPerMinuteAmountIndex: $selectedSatsPerMinuteAmountIndex, '
         'iosAppBarRGBAColor :$iosAppBarRGBAColor, featureFlags: $featureFlags }';
   }

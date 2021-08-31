@@ -50,8 +50,6 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
       'userEmail': options.userEmail,
       'iosAppBarRGBAColor': options.iosAppBarRGBAColor,
       'isLightTheme': options.isLightTheme,
-      'presetBoostAmountsList': options.presetBoostAmountsList,
-      'presetSatsPerMinuteAmountsList': options.presetSatsPerMinuteAmountsList,
       'customBoostValue': options.customBoostValue,
       'customSatsPerMinAmountValue': options.customSatsPerMinAmountValue,
       'selectedBoostAmountIndex': options.selectedBoostAmountIndex,
