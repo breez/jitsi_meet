@@ -277,6 +277,10 @@ class _MeetingState extends State<Meeting> {
       ..videoMuted = isVideoMuted
       ..featureFlags.addAll(featureFlags)
       ..isLightTheme = isLightTheme
+      ..customBoostValue = 2500
+      ..customSatsPerMinAmountValue = 125
+      ..selectedBoostAmountIndex = 1
+      ..selectedSatsPerMinuteAmountIndex = 0
       ..webOptions = {
         "roomName": roomText.text,
         "width": "100%",

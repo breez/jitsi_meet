@@ -137,6 +137,10 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
                 .setVideoMuted(call.argument("videoMuted") ?: false)
                 .setUserInfo(userInfo)
                 .setLightTheme(call.argument("isLightTheme") ?: true)
+                .setCustomBoostValue(call.argument("customBoostValue"))
+                .setCustomSatsPerMinAmountValue(call.argument("customSatsPerMinAmountValue"))
+                .setSelectedBoostAmountIndex(call.argument("selectedBoostAmountIndex") ?: 0)
+                .setSelectedSatsPerMinuteAmountIndex(call.argument("selectedSatsPerMinuteAmountIndex") ?: 0)
 
         // Add feature flags into options, reading given Map
         if (call.argument<HashMap<String, Any>?>("featureFlags") != null) {
