@@ -71,18 +71,14 @@ class JitsiMeetEventStreamHandler private constructor(): EventChannel.StreamHand
         eventSink?.success(data)
     }
 
-    fun setCustomBoostAmount() {
+    fun setCustomBoostAmount(data: MutableMap<String, Any>?) {
         Log.d(JITSI_PLUGIN_TAG, "JitsiMeetEventStreamHandler.setCustomBoostAmount")
-        var data : HashMap<String, String>
-                = HashMap<String, String> ()
         data?.put("event", "setCustomBoostAmount")
         eventSink?.success(data)
     }
 
-    fun setCustomSatsPerMinAmount() {
+    fun setCustomSatsPerMinAmount(data: MutableMap<String, Any>?) {
         Log.d(JITSI_PLUGIN_TAG, "JitsiMeetEventStreamHandler.setCustomSatsPerMinAmount")
-        var data : HashMap<String, String>
-                = HashMap<String, String> ()
         data?.put("event", "setCustomSatsPerMinAmount")
         eventSink?.success(data)
     }
