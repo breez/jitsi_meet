@@ -50,10 +50,7 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
       'userEmail': options.userEmail,
       'iosAppBarRGBAColor': options.iosAppBarRGBAColor,
       'isLightTheme': options.isLightTheme,
-      'customBoostValue': options.customBoostValue,
-      'customSatsPerMinAmountValue': options.customSatsPerMinAmountValue,
-      'selectedBoostAmountIndex': options.selectedBoostAmountIndex,
-      'selectedSatsPerMinuteAmountIndex': options.selectedSatsPerMinuteAmountIndex
+      'paymentOptions': options.paymentOptions,
     };
 
     return await _channel

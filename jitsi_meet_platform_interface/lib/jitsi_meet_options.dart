@@ -21,10 +21,7 @@ class JitsiMeetingOptions {
   String? iosAppBarRGBAColor;
   String? userAvatarURL;
   bool? isLightTheme;
-  int? customBoostValue;
-  int? customSatsPerMinAmountValue;
-  int? selectedBoostAmountIndex;
-  int? selectedSatsPerMinuteAmountIndex;
+  String? paymentOptions;
 
   Map<String, dynamic>? webOptions; // options for web
 
@@ -47,10 +44,8 @@ class JitsiMeetingOptions {
     return 'JitsiMeetingOptions{room: $room, serverURL: $serverURL, '
         'subject: $subject, token: $token, audioMuted: $audioMuted, '
         'audioOnly: $audioOnly, videoMuted: $videoMuted, '
-        'isLightTheme: $isLightTheme, '
+        'isLightTheme: $isLightTheme, paymentOptions: $paymentOptions, '
         'userDisplayName: $userDisplayName, userEmail: $userEmail, '
-        'customSatsPerMinAmountValue: $customSatsPerMinAmountValue, customBoostValue: $customBoostValue, '
-        'selectedBoostAmountIndex: $selectedBoostAmountIndex, selectedSatsPerMinuteAmountIndex: $selectedSatsPerMinuteAmountIndex, '
         'iosAppBarRGBAColor :$iosAppBarRGBAColor, featureFlags: $featureFlags }';
   }
 

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -265,6 +266,13 @@ class _MeetingState extends State<Meeting> {
         featureFlags[FeatureFlagEnum.PIP_ENABLED] = false;
       }
     }
+    String paymentOptions = jsonEncode({
+      "customBoostValue": "2500",
+      "customSatsPerMinAmountValue": "125",
+      "selectedBoostAmountIndex": "1",
+      "selectedSatsPerMinuteAmountIndex": "0",
+    });
+
     // Define meetings options here
     var options = JitsiMeetingOptions(room: roomText.text)
       ..serverURL = serverUrl
@@ -277,10 +285,7 @@ class _MeetingState extends State<Meeting> {
       ..videoMuted = isVideoMuted
       ..featureFlags.addAll(featureFlags)
       ..isLightTheme = isLightTheme
-      ..customBoostValue = 2500
-      ..customSatsPerMinAmountValue = 125
-      ..selectedBoostAmountIndex = 1
-      ..selectedSatsPerMinuteAmountIndex = 0
+      ..paymentOptions = paymentOptions
       ..webOptions = {
         "roomName": roomText.text,
         "width": "100%",
