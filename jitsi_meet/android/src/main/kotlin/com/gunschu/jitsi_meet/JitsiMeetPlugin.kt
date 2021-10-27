@@ -116,6 +116,7 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
         if (call.argument<String?>("userAvatarURL") != null) {
             userInfo.avatar = URL(call.argument("userAvatarURL"))
         }
+        userInfo.paymentInfo = call.argument("paymentInfo");
 
         var serverURLString = call.argument<String>("serverURL")
         if (serverURLString == null) {
