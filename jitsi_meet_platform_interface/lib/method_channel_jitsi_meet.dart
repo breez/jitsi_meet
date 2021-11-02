@@ -72,6 +72,15 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
   }
 
   @override
+  setLocalParticipantProperty(propertyName, propertyValue) {
+    Map<String, dynamic> _args = {
+      'propertyName': propertyName,
+      'propertyValue': propertyValue
+    };
+    _channel.invokeMethod('setLocalParticipantProperty', _args);
+  }
+
+  @override
   addListener(JitsiMeetingListener jitsiMeetingListener) {
     _listeners.add(jitsiMeetingListener);
     initialize();
