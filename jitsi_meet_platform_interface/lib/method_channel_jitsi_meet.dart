@@ -51,6 +51,7 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
       'iosAppBarRGBAColor': options.iosAppBarRGBAColor,
       'isLightTheme': options.isLightTheme,
       'paymentOptions': options.paymentOptions,
+      'paymentInfo': options.paymentInfo,
     };
 
     return await _channel
