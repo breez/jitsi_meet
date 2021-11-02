@@ -10,6 +10,8 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.SET_LOCAL_PARTICIPANT_PROPERTY
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_MEETING_CLOSE
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_PLUGIN_TAG
 import org.jitsi.meet.sdk.JitsiMeetActivity
@@ -53,6 +55,7 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             when (intent?.action) {
                 JITSI_MEETING_CLOSE -> finish()
+                SET_LOCAL_PARTICIPANT_PROPERTY -> setLocalParticipantProperty(intent, context)
             }
         }
     }
@@ -66,7 +69,10 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
     override fun onResume() {
         super.onResume()
         onStopCalled = false
-        registerReceiver(myReceiver, IntentFilter(JITSI_MEETING_CLOSE))
+        val intentFilter: IntentFilter = IntentFilter()
+        intentFilter.addAction(JITSI_MEETING_CLOSE)
+        intentFilter.addAction(SET_LOCAL_PARTICIPANT_PROPERTY)
+        registerReceiver(myReceiver, intentFilter)
     }
 
     override fun onConferenceWillJoin(data: HashMap<String, Any>) {
@@ -155,5 +161,9 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
                             or WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON
             )
         }
+    }
+
+    private fun setLocalParticipantProperty(intent: Intent, context: Context) {
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
     }
 }

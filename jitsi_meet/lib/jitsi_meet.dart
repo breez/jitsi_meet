@@ -94,6 +94,11 @@ class JitsiMeet {
   static executeCommand(String command, List<String> args) {
     JitsiMeetPlatform.instance.executeCommand(command, args);
   }
+
+  /// sets local participant property
+  static setLocalParticipantProperty(String name, String value) {
+    JitsiMeetPlatform.instance.setLocalParticipantProperty(name, value);
+  }
 }
 
 /// Allow create a interface for web view and attach it as a child
