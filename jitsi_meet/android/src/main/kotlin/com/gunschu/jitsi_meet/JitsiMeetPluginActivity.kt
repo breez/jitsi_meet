@@ -16,6 +16,7 @@ import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_MEETING_CLOSE
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_PLUGIN_TAG
 import org.jitsi.meet.sdk.JitsiMeetActivity
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions
+import org.jitsi.meet.sdk.BroadcastIntentHelper
 
 /**
  * Activity extending JitsiMeetActivity in order to override the conference events
@@ -55,7 +56,7 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             when (intent?.action) {
                 JITSI_MEETING_CLOSE -> finish()
-                SET_LOCAL_PARTICIPANT_PROPERTY -> setLocalParticipantProperty(intent, context)
+                SET_LOCAL_PARTICIPANT_PROPERTY -> setLocalParticipantProperty(intent)
             }
         }
     }
@@ -163,7 +164,8 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
         }
     }
 
-    private fun setLocalParticipantProperty(intent: Intent, context: Context) {
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
+    private fun setLocalParticipantProperty(intent: Intent) {
+        val setLocalParticipantPropertyIntent: Intent = BroadcastIntentHelper.buildSetLocalParticipantPropertyIntent(intent.getStringExtra("propertyName"), intent.getStringExtra("propertyValue"))
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(setLocalParticipantPropertyIntent)
     }
 }
