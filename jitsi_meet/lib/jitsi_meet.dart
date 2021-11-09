@@ -99,6 +99,11 @@ class JitsiMeet {
   static setLocalParticipantProperty(String name, String value) {
     JitsiMeetPlatform.instance.setLocalParticipantProperty(name, value);
   }
+
+  /// retrieves participants info
+  static retrieveParticipantsInfo(String requestId) {
+    JitsiMeetPlatform.instance.retrieveParticipantsInfo(requestId);
+  }
 }
 
 /// Allow create a interface for web view and attach it as a child

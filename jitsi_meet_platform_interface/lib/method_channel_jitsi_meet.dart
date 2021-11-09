@@ -81,6 +81,12 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
   }
 
   @override
+  retrieveParticipantsInfo(requestId) {
+    Map<String, dynamic> _args = { 'requestId': requestId };
+    _channel.invokeMethod('retrieveParticipantsInfo', _args);
+  }
+
+  @override
   addListener(JitsiMeetingListener jitsiMeetingListener) {
     _listeners.add(jitsiMeetingListener);
     initialize();

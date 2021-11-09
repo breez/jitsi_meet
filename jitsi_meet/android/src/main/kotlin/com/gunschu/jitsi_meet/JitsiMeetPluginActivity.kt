@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.RETRIEVE_PARTICIPANTS_INFO
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.SET_LOCAL_PARTICIPANT_PROPERTY
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_MEETING_CLOSE
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_PLUGIN_TAG
@@ -57,6 +58,7 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
             when (intent?.action) {
                 JITSI_MEETING_CLOSE -> finish()
                 SET_LOCAL_PARTICIPANT_PROPERTY -> setLocalParticipantProperty(intent)
+                RETRIEVE_PARTICIPANTS_INFO -> retrieveParticipantsInfo(intent)
             }
         }
     }
@@ -73,6 +75,7 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
         val intentFilter: IntentFilter = IntentFilter()
         intentFilter.addAction(JITSI_MEETING_CLOSE)
         intentFilter.addAction(SET_LOCAL_PARTICIPANT_PROPERTY)
+        intentFilter.addAction(RETRIEVE_PARTICIPANTS_INFO)
         registerReceiver(myReceiver, intentFilter)
     }
 
@@ -167,5 +170,10 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
     private fun setLocalParticipantProperty(intent: Intent) {
         val setLocalParticipantPropertyIntent: Intent = BroadcastIntentHelper.buildSetLocalParticipantPropertyIntent(intent.getStringExtra("propertyName"), intent.getStringExtra("propertyValue"))
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(setLocalParticipantPropertyIntent)
+    }
+
+    private fun retrieveParticipantsInfo(intent: Intent) {
+        val retrieveParticipantsInfoIntent: Intent = BroadcastIntentHelper.buildRetrieveParticipantsInfoIntent(intent.getStringExtra("requestId"))
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(retrieveParticipantsInfoIntent)
     }
 }

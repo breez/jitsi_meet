@@ -77,6 +77,7 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
         const val JITSI_EVENT_CHANNEL = "jitsi_meet_events"
         const val JITSI_MEETING_CLOSE = "JITSI_MEETING_CLOSE"
         const val SET_LOCAL_PARTICIPANT_PROPERTY = "SET_LOCAL_PARTICIPANT_PROPERTY"
+        const val RETRIEVE_PARTICIPANTS_INFO = "RETRIEVE_PARTICIPANTS_INFO"
     }
 
     /**
@@ -95,6 +96,9 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
             }
             "setLocalParticipantProperty" -> {
                 setLocalParticipantProperty(call, result)
+            }
+            "retrieveParticipantsInfo" -> {
+                retrieveParticipantsInfo(call, result)
             }
             else -> result.notImplemented()
         }
@@ -175,6 +179,13 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
         val intent = Intent(SET_LOCAL_PARTICIPANT_PROPERTY)
         intent.putExtra("propertyName", call.argument<String>("propertyName"))
         intent.putExtra("propertyValue", call.argument<String>("propertyValue"))
+        activity?.sendBroadcast(intent)
+        result.success(null)
+    }
+
+    private fun retrieveParticipantsInfo(call: MethodCall, result: Result) {
+        val intent = Intent(RETRIEVE_PARTICIPANTS_INFO)
+        intent.putExtra("requestId", call.argument<String>("requestId"))
         activity?.sendBroadcast(intent)
         result.success(null)
     }
