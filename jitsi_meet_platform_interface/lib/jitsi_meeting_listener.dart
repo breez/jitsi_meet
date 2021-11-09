@@ -32,7 +32,7 @@ class JitsiMeetingListener {
   final Function(Map<dynamic, dynamic> message)? setCustomSatsPerMinAmount;
 
   ///
-  final Function(Map<dynamic, dynamic> message)? onParticipantPropertyChanged;
+  final Function(Map<dynamic, dynamic> message)? onParticipantsInfoRetrieved;
 
   /// Generic listeners List for allowed listeners on web
   /// (may be for mobile too)
@@ -49,7 +49,7 @@ class JitsiMeetingListener {
         this.changeSatsPerMinute,
         this.setCustomBoostAmount,
         this.setCustomSatsPerMinAmount,
-        this.onParticipantPropertyChanged,
+        this.onParticipantsInfoRetrieved,
         this.genericListeners});
 }
 

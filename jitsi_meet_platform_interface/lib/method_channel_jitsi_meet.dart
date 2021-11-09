@@ -153,9 +153,9 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
           if (listener.setCustomSatsPerMinAmount != null)
             listener.setCustomSatsPerMinAmount!(message);
           break;
-        case "onParticipantPropertyChanged":
-          if (listener.onParticipantPropertyChanged != null)
-            listener.onParticipantPropertyChanged!(message);
+        case "onParticipantsInfoRetrieved":
+          if (listener.onParticipantsInfoRetrieved != null)
+            listener.onParticipantsInfoRetrieved!(message);
           break;
       }
     });
@@ -198,9 +198,9 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
           if (listener.setCustomSatsPerMinAmount != null)
             listener.setCustomSatsPerMinAmount!(message);
           break;
-        case "onParticipantPropertyChanged":
-          if (listener.onParticipantPropertyChanged != null)
-            listener.onParticipantPropertyChanged!(message);
+        case "onParticipantsInfoRetrieved":
+          if (listener.onParticipantsInfoRetrieved != null)
+            listener.onParticipantsInfoRetrieved!(message);
           break;
       }
     }
