@@ -5,12 +5,10 @@ import 'jitsi_meet_options.dart';
 import 'jitsi_meet_response.dart';
 import 'jitsi_meeting_listener.dart';
 import 'method_channel_jitsi_meet.dart';
-import 'participants_info_response.dart';
 
 export 'jitsi_meeting_listener.dart';
 export 'jitsi_meet_options.dart';
 export 'jitsi_meet_response.dart';
-export 'participants_info_response.dart';
 export 'feature_flag/feature_flag_helper.dart';
 export 'feature_flag/feature_flag_enum.dart';
 
@@ -70,10 +68,6 @@ abstract class JitsiMeetPlatform extends PlatformInterface {
 
   void setLocalParticipantProperty(String name, String value) {
     throw UnimplementedError('setLocalParticipantProperty has not been implemented.');
-  }
-
-  Future<ParticipantsInfoResponse> retrieveParticipantsInfo() {
-    throw UnimplementedError('retrieveParticipantsInfo has not been implemented.');
   }
 
   /// buildView
