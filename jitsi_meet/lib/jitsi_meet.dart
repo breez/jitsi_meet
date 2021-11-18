@@ -11,7 +11,6 @@ export 'package:jitsi_meet_platform_interface/jitsi_meet_platform_interface.dart
     show
         JitsiMeetingOptions,
         JitsiMeetingResponse,
-        ParticipantInfoResponse,
         JitsiMeetingListener,
         JitsiGenericListener,
         FeatureFlagHelper,
@@ -99,11 +98,6 @@ class JitsiMeet {
   /// sets local participant property
   static setLocalParticipantProperty(String name, String value) {
     JitsiMeetPlatform.instance.setLocalParticipantProperty(name, value);
-  }
-
-  /// retrieves participants info
-  static Future<ParticipantInfoResponse> retrieveParticipantsInfo() async {
-    return await JitsiMeetPlatform.instance.retrieveParticipantsInfo();
   }
 }
 
