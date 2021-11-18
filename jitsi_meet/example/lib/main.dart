@@ -44,7 +44,8 @@ class _MeetingState extends State<Meeting> {
         onBoost: _onBoost,
         changeSatsPerMinute: _changeSatsPerMinute,
         setCustomBoostAmount: _setCustomBoostAmount,
-        setCustomSatsPerMinAmount: _setCustomSatsPerMinAmount));
+        setCustomSatsPerMinAmount: _setCustomSatsPerMinAmount,
+        onParticipantJoined: _onParticipantJoined));
   }
 
   @override
@@ -322,6 +323,9 @@ class _MeetingState extends State<Meeting> {
           setCustomSatsPerMinAmount: (message) {
             debugPrint("Called setCustomSatsPerMinAmount with message: $message");
           },
+          onParticipantJoined: (message) {
+            debugPrint("Called onParticipantJoined with message: $message");
+          },
           genericListeners: [
             JitsiGenericListener(
                 eventName: 'readyToClose',
@@ -358,6 +362,10 @@ class _MeetingState extends State<Meeting> {
 
   void _setCustomSatsPerMinAmount(message) {
     debugPrint("_setCustomSatsPerMinAmount broadcasted with message: $message");
+  }
+
+  void _onParticipantJoined(message) {
+    debugPrint("_onParticipantJoined broadcasted with message: $message");
   }
 
   _onError(error) {
