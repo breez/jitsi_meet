@@ -11,6 +11,7 @@ export 'package:jitsi_meet_platform_interface/jitsi_meet_platform_interface.dart
     show
         JitsiMeetingOptions,
         JitsiMeetingResponse,
+        ParticipantInfoResponse,
         JitsiMeetingListener,
         JitsiGenericListener,
         FeatureFlagHelper,
@@ -101,8 +102,8 @@ class JitsiMeet {
   }
 
   /// retrieves participants info
-  static retrieveParticipantsInfo(String requestId) {
-    JitsiMeetPlatform.instance.retrieveParticipantsInfo(requestId);
+  static Future<ParticipantInfoResponse> retrieveParticipantsInfo() async {
+    return await JitsiMeetPlatform.instance.retrieveParticipantsInfo();
   }
 }
 
