@@ -118,6 +118,12 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
         super.setCustomSatsPerMinAmount(data)
     }
 
+    override fun onParticipantJoined(data: HashMap<String, Any>) {
+        Log.d(JITSI_PLUGIN_TAG, String.format("JitsiMeetPluginActivity.onParticipantJoined: %s", data))
+        JitsiMeetEventStreamHandler.instance.onParticipantJoined(data)
+        super.onParticipantJoined(data)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         turnScreenOnAndKeyguardOff();
