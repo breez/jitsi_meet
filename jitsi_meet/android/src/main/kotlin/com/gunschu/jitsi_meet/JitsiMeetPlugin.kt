@@ -98,7 +98,7 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
                 setLocalParticipantProperty(call, result)
             }
             "retrieveParticipantsInfo" -> {
-                retrieveParticipantsInfo(call, result)
+                retrieveParticipantsInfo(result)
             }
             else -> result.notImplemented()
         }
@@ -124,7 +124,6 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
         if (call.argument<String?>("userAvatarURL") != null) {
             userInfo.avatar = URL(call.argument("userAvatarURL"))
         }
-        userInfo.paymentInfo = call.argument("paymentInfo");
 
         var serverURLString = call.argument<String>("serverURL")
         if (serverURLString == null) {
@@ -183,11 +182,11 @@ public class JitsiMeetPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware
         result.success(null)
     }
 
-    private fun retrieveParticipantsInfo(call: MethodCall, result: Result) {
+    private fun retrieveParticipantsInfo(result: Result) {
         val intent = Intent(RETRIEVE_PARTICIPANTS_INFO)
-        intent.putExtra("requestId", call.argument<String>("requestId"))
         activity?.sendBroadcast(intent)
-        result.success(null)
+        // TODO: Return value of ParticipantsCallback.onReceived
+        result.success("retrieveParticipantsInfo result not implemented yet")
     }
 
     /**
