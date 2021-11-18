@@ -22,7 +22,6 @@ class JitsiMeetingOptions {
   String? userAvatarURL;
   bool? isLightTheme;
   String? paymentOptions;
-  String? paymentInfo;
 
   Map<String, dynamic>? webOptions; // options for web
 
@@ -45,7 +44,7 @@ class JitsiMeetingOptions {
     return 'JitsiMeetingOptions{room: $room, serverURL: $serverURL, '
         'subject: $subject, token: $token, audioMuted: $audioMuted, '
         'audioOnly: $audioOnly, videoMuted: $videoMuted, '
-        'isLightTheme: $isLightTheme, paymentOptions: $paymentOptions, paymentInfo: $paymentInfo, '
+        'isLightTheme: $isLightTheme, paymentOptions: $paymentOptions, '
         'userDisplayName: $userDisplayName, userEmail: $userEmail, '
         'iosAppBarRGBAColor :$iosAppBarRGBAColor, featureFlags: $featureFlags }';
   }
