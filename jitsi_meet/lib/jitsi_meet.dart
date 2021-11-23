@@ -99,6 +99,11 @@ class JitsiMeet {
   static setLocalParticipantProperty(String name, String value) {
     JitsiMeetPlatform.instance.setLocalParticipantProperty(name, value);
   }
+
+  /// retrieves participants info
+  static Future<JitsiMeetingResponse> retrieveParticipantsInfo() async {
+    return await JitsiMeetPlatform.instance.retrieveParticipantsInfo();
+  }
 }
 
 /// Allow create a interface for web view and attach it as a child

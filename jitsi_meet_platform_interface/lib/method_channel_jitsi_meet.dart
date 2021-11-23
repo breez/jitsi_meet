@@ -8,6 +8,7 @@ import 'jitsi_meet_options.dart';
 import 'jitsi_meet_platform_interface.dart';
 import 'jitsi_meet_response.dart';
 import 'jitsi_meeting_listener.dart';
+import 'participants_info_response.dart';
 
 const MethodChannel _channel = MethodChannel('jitsi_meet');
 
@@ -77,6 +78,20 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
       'propertyValue': propertyValue
     };
     _channel.invokeMethod('setLocalParticipantProperty', _args);
+  }
+
+  @override
+  Future<JitsiMeetingResponse> retrieveParticipantsInfo() async {
+    return await _channel
+        .invokeMethod<String>('retrieveParticipantsInfo')
+        .then((message) =>
+        JitsiMeetingResponse(isSuccess: true, message: message))
+        .catchError(
+          (error) {
+        return JitsiMeetingResponse(
+            isSuccess: true, message: error.toString(), error: error);
+      },
+    );
   }
 
   @override

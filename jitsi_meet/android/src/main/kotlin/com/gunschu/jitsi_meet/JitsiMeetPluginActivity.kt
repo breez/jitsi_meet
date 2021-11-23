@@ -11,12 +11,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.RETRIEVE_PARTICIPANTS_INFO
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.SET_LOCAL_PARTICIPANT_PROPERTY
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_MEETING_CLOSE
 import com.gunschu.jitsi_meet.JitsiMeetPlugin.Companion.JITSI_PLUGIN_TAG
 import org.jitsi.meet.sdk.JitsiMeetActivity
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions
 import org.jitsi.meet.sdk.BroadcastIntentHelper
+import org.jitsi.meet.sdk.ParticipantInfo
+import org.jitsi.meet.sdk.ParticipantsService
+import org.jitsi.meet.sdk.ParticipantsService.ParticipantsInfoCallback
 
 /**
  * Activity extending JitsiMeetActivity in order to override the conference events
@@ -57,6 +61,7 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
             when (intent?.action) {
                 JITSI_MEETING_CLOSE -> finish()
                 SET_LOCAL_PARTICIPANT_PROPERTY -> setLocalParticipantProperty(intent)
+                RETRIEVE_PARTICIPANTS_INFO -> retrieveParticipantsInfoFn()
             }
         }
     }
@@ -73,6 +78,7 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
         val intentFilter: IntentFilter = IntentFilter()
         intentFilter.addAction(JITSI_MEETING_CLOSE)
         intentFilter.addAction(SET_LOCAL_PARTICIPANT_PROPERTY)
+        intentFilter.addAction(RETRIEVE_PARTICIPANTS_INFO)
         registerReceiver(myReceiver, intentFilter)
     }
 
@@ -173,5 +179,18 @@ class JitsiMeetPluginActivity : JitsiMeetActivity() {
     private fun setLocalParticipantProperty(intent: Intent) {
         val setLocalParticipantPropertyIntent: Intent = BroadcastIntentHelper.buildSetLocalParticipantPropertyIntent(intent.getStringExtra("propertyName"), intent.getStringExtra("propertyValue"))
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(setLocalParticipantPropertyIntent)
+    }
+
+    private fun retrieveParticipantsInfoFn() {
+        val participantsCallback = ParticipantsCallback()
+        val participantsService = ParticipantsService.getInstance()
+        participantsService?.retrieveParticipantsInfo(participantsCallback)
+    }
+}
+
+internal class ParticipantsCallback : ParticipantsInfoCallback {
+    override fun onReceived(participantInfoList: List<ParticipantInfo?>?) {
+        Log.d(JITSI_PLUGIN_TAG, String.format("ParticipantsCallback.onReceived: " + participantInfoList));
+        //TODO : Return result to UI layer
     }
 }
