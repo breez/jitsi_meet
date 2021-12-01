@@ -66,14 +66,6 @@ abstract class JitsiMeetPlatform extends PlatformInterface {
     throw UnimplementedError('executeCommand has not been implemented.');
   }
 
-  void setLocalParticipantProperty(String name, String value) {
-    throw UnimplementedError('setLocalParticipantProperty has not been implemented.');
-  }
-
-  Future<JitsiMeetingResponse> retrieveParticipantsInfo() async {
-    throw UnimplementedError('retrieveParticipantsInfo has not been implemented.');
-  }
-
   /// buildView
   /// Method added to support Web plugin, the main purpose is return a <div>
   /// to contain the conferencing screen when start
